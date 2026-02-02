@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fawn & Craig | We're Getting Married</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Sage Green Palette */
+            --sage-deep: #4a5d4a;
+            --sage: #7d9478;
+            --sage-light: #a8c0a1;
+            --sage-pale: #d4e4cf;
+            --sage-whisper: #eef4ec;
+            --cream: #fdfcf8;
+            --cream-warm: #f9f6f0;
+            --text-dark: #3d4a3d;
+            --text-light: #6b7c6b;
+            --gold-accent: #c9a962;
+            --blush: #e8d5d0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Decorative Elements */
+        .floral-corner {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floral-top-left {
+            top: 0;
+            left: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M0,0 Q50,80 20,150 Q60,120 100,140 Q80,100 120,60 Q60,70 0,0' fill='%23a8c0a1' opacity='0.5'/%3E%3Cpath d='M30,0 Q70,50 50,100 Q80,70 110,90 Q90,50 80,10 Q50,30 30,0' fill='%237d9478' opacity='0.4'/%3E%3Ccircle cx='45' cy='55' r='8' fill='%23d4e4cf'/%3E%3Ccircle cx='75' cy='35' r='5' fill='%23e8d5d0'/%3E%3Ccircle cx='25' cy='85' r='6' fill='%23fdfcf8'/%3E%3C/svg%3E") no-repeat;
+        }
+
+        .floral-top-right {
+            top: 0;
+            right: 0;
+            transform: scaleX(-1);
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M0,0 Q50,80 20,150 Q60,120 100,140 Q80,100 120,60 Q60,70 0,0' fill='%23a8c0a1' opacity='0.5'/%3E%3Cpath d='M30,0 Q70,50 50,100 Q80,70 110,90 Q90,50 80,10 Q50,30 30,0' fill='%237d9478' opacity='0.4'/%3E%3Ccircle cx='45' cy='55' r='8' fill='%23d4e4cf'/%3E%3Ccircle cx='75' cy='35' r='5' fill='%23e8d5d0'/%3E%3Ccircle cx='25' cy='85' r='6' fill='%23fdfcf8'/%3E%3C/svg%3E") no-repeat;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 252, 248, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid var(--sage-pale);
+        }
+
+        nav a {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--sage);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--sage-deep);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero / Countdown Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--sage-whisper) 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='1' fill='%237d9478' opacity='0.2'/%3E%3Ccircle cx='80' cy='40' r='1.5' fill='%23a8c0a1' opacity='0.2'/%3E%3Ccircle cx='40' cy='70' r='1' fill='%237d9478' opacity='0.15'/%3E%3Ccircle cx='90' cy='80' r='1' fill='%23a8c0a1' opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 150px 150px;
+            opacity: 0.8;
+        }
+
+        /* Bird SVG decoration */
+        .bird {
+            position: absolute;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bird-1 {
+            top: 15%;
+            left: 10%;
+            width: 40px;
+            animation-delay: 0s;
+        }
+
+        .bird-2 {
+            top: 20%;
+            right: 15%;
+            width: 30px;
+            animation-delay: 2s;
+        }
+
+        .bird-3 {
+            top: 30%;
+            left: 20%;
+            width: 25px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .preheading {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--sage-deep);
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .couple-names .ampersand {
+            font-style: normal;
+            color: var(--gold-accent);
+            margin: 0 0.3em;
+        }
+
+        .wedding-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-light);
+            letter-spacing: 3px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .countdown-item {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border: 1px solid var(--sage-pale);
+            min-width: 100px;
+            box-shadow: 0 4px 20px rgba(125, 148, 120, 0.1);
+        }
+
+        .countdown-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--sage-deep);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--sage);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--sage-deep);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sage), transparent);
+            margin: 0 auto 3rem;
+        }
+
+        /* Leaf divider */
+        .leaf-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0 auto 3rem;
+        }
+
+        .leaf-divider svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--sage-light);
+        }
+
+        .leaf-divider::before,
+        .leaf-divider::after {
+            content: '';
+            width: 50px;
+            height: 1px;
+            background: var(--sage-pale);
+        }
+
+        /* Our Story */
+        .story-section {
+            background: var(--cream-warm);
+        }
+
+        .story-content {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .story-placeholder {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px dashed var(--sage-pale);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .story-placeholder p {
+            margin-bottom: 1rem;
+        }
+
+        .story-placeholder p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Photo placeholder */
+        .photo-frame {
+            width: 280px;
+            height: 350px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, var(--sage-whisper) 0%, var(--cream) 100%);
+            border: 3px solid var(--sage-pale);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(125, 148, 120, 0.15);
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid var(--sage-light);
+            border-radius: 2px;
+        }
+
+        .photo-frame svg {
+            width: 60px;
+            height: 60px;
+            stroke: var(--sage-light);
+            stroke-width: 1;
+            fill: none;
+        }
+
+        /* Schedule */
+        .schedule-section {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--sage-whisper) 100%);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--sage-pale), var(--sage), var(--sage-pale));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: var(--cream);
+            border: 2px solid var(--sage);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .timeline-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--sage-deep);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-event {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-detail {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .schedule-placeholder {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px dashed var(--sage-pale);
+            border-radius: 12px;
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Venue */
+        .venue-section {
+            background: var(--cream);
+        }
+
+        .venue-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(125, 148, 120, 0.1);
+            border: 1px solid var(--sage-pale);
+        }
+
+        .venue-map {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--sage-whisper) 0%, var(--sage-pale) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .venue-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .venue-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--sage-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .venue-address {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .venue-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--sage);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .venue-btn:hover {
+            background: var(--sage-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(125, 148, 120, 0.3);
+        }
+
+        .venue-placeholder {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Gift Guide */
+        .gift-section {
+            background: linear-gradient(180deg, var(--sage-whisper) 0%, var(--cream) 100%);
+        }
+
+        .gift-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(125, 148, 120, 0.1);
+            border: 1px solid var(--sage-pale);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage-light), var(--sage), var(--sage-light));
+        }
+
+        .gift-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--sage-whisper);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gift-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--sage);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .gift-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--sage-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        .gift-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .gift-text p {
+            margin-bottom: 1rem;
+        }
+
+        .gift-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .gift-heart {
+            color: var(--blush);
+            font-style: normal;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--sage-deep);
+            color: var(--sage-pale);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-date {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .footer-hashtag {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav a {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                padding: 1rem 1.5rem;
+                min-width: 80px;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .photo-frame {
+                width: 220px;
+                height: 280px;
+            }
+
+            .gift-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .couple-names {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#story">Our Story</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#venue">Venue</a>
+        <a href="#gifts">Gifts</a>
+    </nav>
+
+    <!-- Hero / Countdown Section -->
+    <section class="hero" id="home">
+        <div class="floral-corner floral-top-left"></div>
+        <div class="floral-corner floral-top-right"></div>
+        
+        <!-- Decorative birds -->
+        <svg class="bird bird-1" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--sage);">
+            <path d="M5,25 Q15,15 25,20 Q35,25 45,15 M25,20 Q25,30 20,35"/>
+        </svg>
+        <svg class="bird bird-2" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--sage-light);">
+            <path d="M5,25 Q15,15 25,20 Q35,25 45,15 M25,20 Q25,30 20,35"/>
+        </svg>
+        <svg class="bird bird-3" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--sage);">
+            <path d="M5,25 Q15,15 25,20 Q35,25 45,15 M25,20 Q25,30 20,35"/>
+        </svg>
+        
+        <div class="hero-content">
+            <p class="preheading">Together with their families</p>
+            <h1 class="couple-names">
+                Fawn <span class="ampersand">&</span> Craig
+            </h1>
+            <p class="wedding-date">June 14, 2025</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">---</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">--</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">--</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">--</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#story" class="scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section" id="story">
+        <div class="section-container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="leaf-divider">
+                <svg viewBox="0 0 30 30">
+                    <path d="M15,2 Q25,10 20,20 Q15,25 10,20 Q5,10 15,2 M15,2 L15,28"/>
+                </svg>
+            </div>
+            
+            <div class="photo-frame">
+                <svg viewBox="0 0 60 60">
+                    <rect x="5" y="10" width="50" height="35" rx="2"/>
+                    <circle cx="20" cy="23" r="6"/>
+                    <path d="M5,40 L20,30 L35,38 L45,28 L55,35 L55,45 L5,45 Z"/>
+                </svg>
+            </div>
+            
+            <div class="story-content">
+                <div class="story-placeholder">
+                    <p><strong>Your love story goes here...</strong></p>
+                    <p>Share how you met, your first date, the proposal, and all the beautiful moments that led to this celebration.</p>
+                    <p>— Edit this section in the HTML file —</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section" id="schedule">
+        <div class="section-container">
+            <h2 class="section-title">Wedding Day</h2>
+            <div class="leaf-divider">
+                <svg viewBox="0 0 30 30">
+                    <path d="M15,2 Q25,10 20,20 Q15,25 10,20 Q5,10 15,2 M15,2 L15,28"/>
+                </svg>
+            </div>
+            
+            <div class="schedule-placeholder">
+                <p><strong>Schedule details coming soon...</strong></p>
+                <p>Ceremony time, reception details, and more will be added here.</p>
+                <p>— Edit this section in the HTML file —</p>
+            </div>
+            
+            <!-- 
+            =============================================
+            UNCOMMENT AND EDIT THE TIMELINE BELOW WHEN READY:
+            =============================================
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">3:00 PM</div>
+                    <div class="timeline-event">Ceremony</div>
+                    <div class="timeline-detail">Doors open at 2:30 PM</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">4:00 PM</div>
+                    <div class="timeline-event">Cocktail Hour</div>
+                    <div class="timeline-detail">Drinks and appetizers in the garden</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">5:30 PM</div>
+                    <div class="timeline-event">Reception</div>
+                    <div class="timeline-detail">Dinner, dancing & celebration</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">10:00 PM</div>
+                    <div class="timeline-event">Farewell</div>
+                    <div class="timeline-detail">Sparkler send-off</div>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section class="venue-section" id="venue">
+        <div class="section-container">
+            <h2 class="section-title">The Venue</h2>
+            <div class="leaf-divider">
+                <svg viewBox="0 0 30 30">
+                    <path d="M15,2 Q25,10 20,20 Q15,25 10,20 Q5,10 15,2 M15,2 L15,28"/>
+                </svg>
+            </div>
+            
+            <div class="venue-card">
+                <div class="venue-map">
+                    <!-- Replace with Google Maps embed or image -->
+                    Map will be displayed here
+                </div>
+                <div class="venue-placeholder">
+                    <p><strong>Venue details coming soon...</strong></p>
+                    <p>Address and directions will be added here.</p>
+                    <p>— Edit this section in the HTML file —</p>
+                </div>
+                
+                <!--
+                =============================================
+                UNCOMMENT AND EDIT WHEN READY:
+                =============================================
+                
+                <div class="venue-info">
+                    <h3 class="venue-name">Venue Name</h3>
+                    <p class="venue-address">
+                        123 Beautiful Lane<br>
+                        City, State 12345
+                    </p>
+                    <a href="https://maps.google.com" target="_blank" class="venue-btn">Get Directions</a>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Guide Section -->
+    <section class="gift-section" id="gifts">
+        <div class="section-container">
+            <h2 class="section-title">Gifts</h2>
+            <div class="leaf-divider">
+                <svg viewBox="0 0 30 30">
+                    <path d="M15,2 Q25,10 20,20 Q15,25 10,20 Q5,10 15,2 M15,2 L15,28"/>
+                </svg>
+            </div>
+            
+            <div class="gift-card">
+                <div class="gift-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="8" width="18" height="13" rx="1"/>
+                        <path d="M12,8 L12,21"/>
+                        <path d="M3,12 L21,12"/>
+                        <path d="M12,8 C12,8 12,4 9,4 C6,4 6,8 9,8"/>
+                        <path d="M12,8 C12,8 12,4 15,4 C18,4 18,8 15,8"/>
+                    </svg>
+                </div>
+                <h3 class="gift-title">Your Presence is Our Present</h3>
+                <div class="gift-text">
+                    <p>Your presence at our wedding is the greatest gift of all! We're so lucky to already have a home filled with everything we need.</p>
+                    <p>If you'd like to give a gift, a gift card to any of your favorite stores would be truly appreciated — and put to good use as we begin this new chapter together.</p>
+                    <p>Thank you for your love and support! <span class="gift-heart">♥</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-names">Fawn & Craig</p>
+        <p class="footer-date">JUNE 14, 2025</p>
+        <p class="footer-hashtag">#FawnAndCraig2025</p>
+    </footer>
+
+    <!-- Countdown Script -->
+    <script>
+        // =============================================
+        // EDIT THIS DATE TO YOUR WEDDING DATE
+        // Format: Year, Month (0-11), Day, Hour, Minute
+        // Note: Month is 0-indexed (January = 0, June = 5)
+        // =============================================
+        const weddingDate = new Date(2025, 5, 14, 15, 0, 0); // June 14, 2025 at 3:00 PM
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

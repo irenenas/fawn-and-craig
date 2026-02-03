@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fawn & Craig | We're Getting Married</title>
     
+    <!-- Block search engines and AI crawlers -->
+    <meta name="robots" content="noindex, nofollow, noarchive, noimageai, noai">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="CCBot" content="noindex, nofollow">
+    <meta name="GPTBot" content="noindex, nofollow">
+    <meta name="anthropic-ai" content="noindex, nofollow">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWLNFGH58Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BWLNFGH58Q');
+    </script>
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -922,9 +938,9 @@
         // =============================================
         // EDIT THIS DATE TO YOUR WEDDING DATE
         // Format: Year, Month (0-11), Day, Hour, Minute
-        // Note: Month is 0-indexed (January = 0, May = 4)
+        // Note: Month is 0-indexed (January = 0, June = 5)
         // =============================================
-        const weddingDate = new Date(2026, 5, 2, 15, 0, 0); // May 2, 2026 at 3:00 PM
+        const weddingDate = new Date(2026, 4, 2, 16, 0, 0); // May 2, 2026 at 4:00 PM
 
         function updateCountdown() {
             const now = new Date();
